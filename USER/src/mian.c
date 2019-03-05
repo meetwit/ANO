@@ -23,7 +23,7 @@ int main(){
 	while(1){
 		
 //		Task_Pc();
-		if(send_flag>100){
+		if(send_flag>1){
 			x+=0.1;
 			xx+=0.5;
 			y=sin(x);
