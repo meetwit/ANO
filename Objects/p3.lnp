@@ -1,11 +1,8 @@
 --cpu Cortex-M3
 ".\objects\mian.o"
 ".\objects\usart1.o"
-".\objects\tim2.o"
-".\objects\usart3.o"
-".\objects\usart2.o"
 ".\objects\ano.o"
-".\objects\startup_stm32f10x_hd.o"
+".\objects\startup_stm32f10x_md.o"
 ".\objects\system_stm32f10x.o"
 --strict --scatter ".\Objects\p3.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols

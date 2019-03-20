@@ -1,5 +1,4 @@
 #include "usart1.h"
-#include "usart2.h"
 #include "string.h"
 #include "stdio.h"
 /*一般.c定义数据*/
@@ -149,7 +148,7 @@ void PcTx_String(u8 *str){
 void Task_Pc()
 {
 	if(Rx_End==1){
-		printf("get\r\n");
+//		printf("get\r\n");
 		Rx_End=0;
 		Rx_Len=0;
 		memset(Rx_Buf,0,sizeof(Rx_Buf));

@@ -1,38 +1,48 @@
+/*
+ANO应用示例
+*/
+
 #include "stm32f10x.h"
-#include "tim2.h"
 #include "usart1.h"
-#include "usart2.h"
-#include "usart3.h"
 #include "stdio.h" 
 #include "ANO.h" 
 #include "math.h" 
 
+void delay(void){
+	u16 n,m;
+	for(n=0;n<1000;n++)
+	for(m=0;m<1000;m++)
+		{
+			;
+		}
+}
 
 int main(){
-	float x=0,xx=0;
-	double y=0,yy=0;
 	
-	/*定时器2初始化*/
-	init_tim2();
+	float f1[3];
+	int 	f2[3];
+	float index = 0;
 	
-	/*串口1初始化，波特率为9600*/
-	usart_init(115200);			//串口1作为监控
+	/*串口1初始化，波特率为115200*/
+	usart_init(115200);
 	
-//	printf("helo\r\n");
 	
 	while(1){
 		
-//		Task_Pc();
-		if(send_flag>1){
-			x+=0.1;
-			xx+=0.5;
-			y=sin(x);
-			yy=sin(xx);
-			
-			ANO_send(0xF1,y,yy,0);
-			send_flag=0;
-		}
+			index+=0.1;
 		
+			f1[0]=sin(index);
+			f1[1]=sin(index)+1;
+			f1[2]=sin(index)-1;
+		
+			f2[0]=-2;
+			f2[1]=0;
+			f2[2]=2;
+			
+			ANO_send(0xf1,(unsigned char *)f1,sizeof(float),sizeof(f1));
+			ANO_send(0xf2,(unsigned char *)f2,sizeof(	 int),sizeof(f2));
+			
+		delay();
 	}
 
 }
